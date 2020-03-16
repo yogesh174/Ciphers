@@ -1,16 +1,16 @@
 def encrypt(label_result,pt,k):
     pt = pt.get()
-    k = int(k.get())
+    k = int(k.get())%26
     ct=""
     for i in pt:
         asc_i = ord(i)
-        if(65 <= ord(i) <= 90):
-            if(ord(i)+k > 90):
+        if(65 <= asc_i <= 90):
+            if(asc_i + k > 90):
                 asc_i -= 26
             ct = ct + chr(asc_i + k)        
             continue
-        elif(97 <= ord(i) <= 122):
-            if(ord(i)+k > 122):
+        elif(97 <= asc_i <= 122):
+            if(asc_i + k > 122):
                 asc_i -= 26
             ct = ct + chr(asc_i + k)
             continue
@@ -20,17 +20,17 @@ def encrypt(label_result,pt,k):
   
 def decrypt(label_result,ct,k):
     ct = ct.get()
-    k = int(k.get())
+    k = int(k.get())%26
     pt=""
     for i in ct:
         asc_i = ord(i)
-        if(65 <= ord(i) <= 90):
-            if(ord(i)+k < 65):
+        if(65 <= asc_i <= 90):
+            if(asc_i - k < 65):
                 asc_i += 26
             pt = pt + chr(asc_i - k)        
             continue
-        elif(97 <= ord(i) <= 122):
-            if(ord(i)+k < 97):
+        elif(97 <= asc_i <= 122):
+            if(asc_i - k < 97):
                 asc_i += 26
             pt = pt + chr(asc_i - k)
             continue
